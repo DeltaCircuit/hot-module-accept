@@ -1,0 +1,24 @@
+{
+  "name": "hot-module-accept",
+  "version": "0.0.1",
+  "description": "A simple webpack loader to append module.accept which will enable HMR",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/giridharangm/hot-module-accept.git"
+  },
+  "keywords": [
+    "webpack",
+    "loader",
+    "hmr"
+  ],
+  "author": "Giridharan GM",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/giridharangm/hot-module-accept/issues"
+  },
+  "homepage": "https://github.com/giridharangm/hot-module-accept#readme"
+}
