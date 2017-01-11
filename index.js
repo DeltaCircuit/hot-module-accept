@@ -1,6 +1,7 @@
 var path = require('path')
 
 module.exports = function (source) {
+    this.cacheable()
     //Custom property in webpack config which tells us which file is the main entry point
     var entryScript = path.resolve(this.options.entryScript)
     if (entryScript == this.resourcePath) {        
