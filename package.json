@@ -1,6 +1,6 @@
 {
   "name": "hot-module-accept",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "One of the dumb yet useful package. This will append hot.module.accept() to your entry file of your project automatically",
   "main": "index.js",
   "scripts": {
