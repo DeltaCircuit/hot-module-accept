@@ -1,7 +1,7 @@
 {
   "name": "hot-module-accept",
-  "version": "0.0.1",
-  "description": "A simple webpack loader to append module.accept which will enable HMR",
+  "version": "1.0.0",
+  "description": "One of the dumb yet useful package. This will append hot.module.accept() to your entry file of your project automatically",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
