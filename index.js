@@ -7,7 +7,11 @@ function hmr(source) {
   const entry = this.options.entry;
   const customEntrypoint = this.options.entryPoint;
 
-  if (this.options.customEntrypoint) {
+  if (customEntrypoint) {
+    const isValid = Object.prototype.toString.call(customEntrypoint) === ['object String']
+    if (!isValid) {
+      throw new Error("The entryPoint should be a valid string")
+    }
     entryFile = customEntrypoint;
   } else {
     const entryType = Object.prototype.toString.call(entry);
