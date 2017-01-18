@@ -13,11 +13,11 @@ function hmr(source) {
       throw new Error("The entryPoint should be a valid string")
     }
     entryFile = customEntrypoint;
-  }  else {
+  } else {
     const entryType = Object.prototype.toString.call(entry);
     if (entryType === '[object Array]') {
-      // Falling back to the last item in the entry array
-      entryFile = entryType[entryType.length - 1];
+      // Falling back to the last item in the entry array      
+      entryFile = entry[entry.length - 1];
     } else if (entryType === '[object Object]') {
       // Named entries.
       // There could be multiple named entries. So iterating that.
@@ -37,9 +37,11 @@ function hmr(source) {
   let isQualified;
 
   if (Object.prototype.toString.call(entryFile) === '[object String]') {
-    isQualified = (path.resolve(entryFile) === context.resourcePath);
+    isQualified = (path.resolve(context.context, path.basename(entryFile)) === context.resourcePath);
   } else if (Object.prototype.toString.call(entryFile) === '[object Array]') {
-    isQualified = entryFile.some(item => context.resourcePath === require.resolve(item));
+    isQualified = entryFile.some(item => {
+      return context.resourcePath === path.resolve(context.context, path.basename(item))
+    });
   }
 
   if (isQualified) {
