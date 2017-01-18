@@ -13,11 +13,11 @@ function hmr(source) {
       throw new Error("The entryPoint should be a valid string")
     }
     entryFile = customEntrypoint;
-  } else {
+  }  else {
     const entryType = Object.prototype.toString.call(entry);
     if (entryType === '[object Array]') {
       // Falling back to the last item in the entry array
-      entryFile = entry[entry.length - 1];
+      entryFile = entryType[entryType.length - 1];
     } else if (entryType === '[object Object]') {
       // Named entries.
       // There could be multiple named entries. So iterating that.
@@ -28,21 +28,18 @@ function hmr(source) {
           entryFile.push(entry[namedEntry]);
         } else if (namedEntryType === '[object Array]') {
           // We take the last item from the named array entry
-          entryFile.push(path.normalize(entry[namedEntry][entry[namedEntry].length - 1]));
+          entryFile.push(entry[namedEntry][entry[namedEntry].length - 1]);
         }
       });
-    } else if (entryType === '[object String]') {
-      entryFile = entry;
     }
   }
 
   let isQualified;
+
   if (Object.prototype.toString.call(entryFile) === '[object String]') {
-    isQualified = (require.resolve(entryFile) === context.resourcePath);
+    isQualified = (path.resolve(entryFile) === context.resourcePath);
   } else if (Object.prototype.toString.call(entryFile) === '[object Array]') {
-    isQualified = entryFile.some(function (item) {
-      return (item === path.normalize(path.relative(__dirname, context.resourcePath)));
-    });
+    isQualified = entryFile.some(item => context.resourcePath === require.resolve(item));
   }
 
   if (isQualified) {
