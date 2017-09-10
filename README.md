@@ -1,4 +1,6 @@
-# hot-module-accept
+# hot-module-accept  
+
+[![Build Status](https://travis-ci.org/giridharangm/hot-module-accept.svg?branch=master)](https://travis-ci.org/giridharangm/hot-module-accept)
 
 This is a simple loader which will append the `module.accept()` to the bottom of the entry script of your project. So you don't have to worry about having a `module` statement in the production build.  
 
